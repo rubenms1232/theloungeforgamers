@@ -4,7 +4,7 @@ import os
 
 def fetch_games():
     """Fetches game data from the API."""
-    url = "https://www.freetogame.com/api/games?platform=pc&sort-by=alphabetical"
+    url = "https://www.freetogame.com/api/games?platform=browser&sort-by=alphabetical"
     response = requests.get(url)
     response.raise_for_status()
     return response.json()
@@ -84,9 +84,9 @@ def generate_html(games):
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li><a href="index.html" >Home</a></li>
-                        <li><a href="PCGAMES.html" class="active">PC Games</a></li>
-                   <!-- <li><a href="browse.html">Browse</a></li>
-                        <li><a href="details.html">Details</a></li>
+                        <li><a href="PCGAMES.html">PC Games</a></li>
+                       <li><a href="webgames.html"class="active">Browse</a></li>
+                       <!-- <li><a href="details.html">Details</a></li>
                         <li><a href="streams.html">Streams</a></li>
                         <li><a href="profile.html">Profile <img src="assets/images/profile-header.jpg" alt=""></a></li>-->
                     </ul>   
@@ -266,7 +266,7 @@ if __name__ == "__main__":
     games = fetch_games()
     html_content = generate_html(games)
 
-    with open("pcgames_update.html", "w") as f:
+    with open("webgames_update.html", "w") as f:
         f.write(html_content)
 
     print("HTML file and images generated successfully!")
